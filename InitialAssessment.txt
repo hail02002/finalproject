@@ -1,0 +1,20 @@
+From the static analysis result recall that to compute the cyclomatic complexities (cc) we get that,
+
+	cc = (e - n) + 2p
+
+where e is the number of edges, n is the number of nodes, and p is the connection. Inspection of the
+classes/methods that even though some of them have significantly have high cc count, their graph doesn't
+seem complex. I believe that the bulk of the contribution where from the "2p" portion of the formula.  
+However, the following classes could be worth refactoring.
+
+package: net.sf.freecol.client
+	class:  InGameController
+		InGameInputHandler
+		PreGameInputHandler
+
+package: net.sf.freecol.client.gui
+	class: 	AbstractCanvasListener
+		Canvas
+		CanvasMapEditorMouseListener
+
+From here we need to follow-up this assessment with unit testing, acceptance testing, etc.
